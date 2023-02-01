@@ -1,0 +1,30 @@
+{
+  "name": "photogenerator",
+  "version": "0.0.1",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node -r tsconfig-paths/register -r ts-node/register ./src/main.ts",
+    "build": "npm run clean && npm run copy-files && tsc",
+    "clean": "rimraf ./dist",
+    "copy-files": "copyfiles -u 1 ./src/html/**/* ./dist"
+  },
+  "author": "Stanislav Kozin",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^9.4.1",
+    "exceljs": "^4.3.0",
+    "fs-extra": "^11.1.0",
+    "puppeteer": "^19.1.0",
+    "puppeteer-cluster": "^0.23.0"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.1",
+    "copyfiles": "^2.4.1",
+    "rimraf": "^4.1.2",
+    "ts-node": "^10.9.1",
+    "tsconfig-paths": "^4.1.0",
+    "typescript": "^4.9.5"
+  }
+}

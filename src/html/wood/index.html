@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="fonts/fonts.css">
+  <title>Document</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'PT Astra Sans'
+    }
+
+    .container {
+      box-sizing: border-box;
+      position: relative;
+      overflow: hidden;
+      width: 1800px;
+      height: 2400px;
+      padding: 50px 50px 50px 0;
+    }
+
+    .text {
+      color: #364596;
+      font-size: 75px;
+      display: block;
+      padding-left: 50px;
+    }
+
+    .text_top {
+      margin-bottom: -10px;
+    }
+
+    .ribbon {
+      margin: 10px 0;
+      display: inline-block;
+      box-sizing: border-box;
+      background: linear-gradient(180deg, #6575C8 0%, #364596 100%);
+      color: #fff;
+      transform: skewX(-30deg);
+      margin-left: -52px;
+      padding: 0 100px 0 103px;
+    }
+
+    .ribbon_top {
+      margin-top: 20px;
+    }
+
+    .bottom-ribbon {
+      position: absolute;
+      top: 1942px;
+      height: 228px;
+      display: flex;
+      align-items: center;
+      line-height: 1;
+    }
+
+    .ribbon_fact {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+
+    .ribbon_double {
+      margin-left: -65px;
+    }
+
+    .ribbon__wrap {
+      transform: skewX(30deg);
+      display: flex;
+    }
+
+    .ribbon__icon {
+      width: 100px;
+      height: 100px;
+      margin-right: 30px;
+      align-self: center;
+    }
+
+    .ribbon__text {
+      display: inline-block;
+      font-size: 80px;
+      font-weight: bold;
+      padding: 16px 0 27px 0;
+    }
+
+    .ribbon__text_top {
+      padding: 13px 0 30px 0;
+    }
+
+    #_name {
+      font-size: 120px;
+    }
+
+    .elka {
+      position: absolute;
+      top: 0;
+      right: 0;
+      z-index: -1;
+    }
+
+    .photo {
+      height: 1332px;
+      width: 1700px;
+      position: absolute;
+      top: calc(50% - 666px);
+      left: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    #photo {
+      max-height: 100%;
+      max-width: 100%;
+      border-radius: 25px;
+    }
+
+    .quantity {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      top: 0;
+      right: 0;
+      width: 225px;
+      height: 225px;
+      background: radial-gradient(50.22% 50.22% at 50.22% 49.78%, #6575C8 0%, #364596 100%);
+      border-radius: 50%;
+      box-shadow: 0px 0px 100px 0px rgba(255, 255, 255, 0.3);
+    }
+
+    .quantity__number {
+      text-align: center;
+      font-weight: bold;
+      line-height: 45px;
+      font-size: 120px;
+      padding-top: 30px;
+    }
+
+    .quantity__unit {
+      font-weight: normal;
+      font-size: 50px;
+    }
+
+    .madeinrussia {
+      width: 400px;
+      position: absolute;
+      bottom: 50px;
+      left: 50px;
+    }
+
+    .logo {
+      width: 400px;
+      position: absolute;
+      bottom: 50px;
+      right: 50px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <span class="text text_top">Набор деревянных ёлочных игрушек</span>
+    <span class="text">в <span id="box"></span></span>
+    <div class="ribbon ribbon_top">
+      <div class="ribbon__wrap">
+        <span class="ribbon__text ribbon__text_top" id="_name">Зимовье зверей</span>
+      </div>
+    </div>
+    <span class="text">Коллекция «<span id="collection">Русские сказки</span>»</span>
+    <img class="elka" src="elka.png" alt="">
+    <div class="photo">
+      <div class="quantity">
+        <span class="quantity__number">
+          <span id="quantity">10</span>
+          <br>
+          <span class="quantity__unit">шт.</span>
+        </span>
+      </div>
+      <img src="1.jpg" alt="" id="photo">
+    </div>
+    <div class="bottom-ribbon">
+      <div class="ribbon ribbon_fact">
+        <div class="ribbon__wrap">
+          <img id="icon" class="ribbon__icon" src="icons/paintbrush.svg" alt="">
+          <span id="text" class="ribbon__text">Ручная роспись</span>
+        </div>
+      </div>
+    </div>
+    <img src="icons/madeinrussia.svg" class="madeinrussia" alt="">
+    <img src="icons/logo.png" class="logo" alt="">
+  </div>
+
+  <script>
+    /*
+     * GET-параметры:
+     * name - Наименование товара
+     * collection - Коллекция, к которой принадлежит товар
+     * quantity - Количество товаров в упаковке
+     * box - Вид коробки
+     * photo - Путь к фото
+     * icon - Иконка на «ленточке»
+     * text - Текст на «ленточке»
+     */
+    const params = new URLSearchParams(location.search)
+
+    // name. Символ "_" нужен, т.к. window.name занято
+    _name.textContent = params.get('name')
+
+    // collection
+    collection.textContent = params.get('collection')
+
+    // quantity
+    quantity.textContent = params.get('quantity')
+
+    // box
+    const b = params.get('box')
+    if (b === 'Фанерная')
+      box.textContent = 'фанерной коробке'
+    else if (b === 'Картонная')
+      box.textContent = 'картонной коробке'
+    else
+      box.textContent = 'фанерном домике'
+
+    // photo
+    const p = params.get('photo')
+    if (p === 'undefined' || !p)
+      photo.src = 'nophoto.png'
+    else
+      photo.src = `temp/${params.get('photo')}`
+
+    // icon
+    if (params.get('icon') === 'undefined' || !params.get('icon')) {
+      icon.style.display = 'none'
+    } else {
+      icon.src = `icons/${params.get('icon')}.svg`
+    }
+
+    //text
+    text.innerHTML = params.get('text')
+    if (params.get('text').includes('<br>')) {
+      document.querySelector('.ribbon_fact').classList.add('ribbon_double')
+    }
+  </script>
+</body>
+
+</html>
