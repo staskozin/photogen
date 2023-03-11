@@ -127,7 +127,7 @@ export default class WoodTemplate extends Template<WoodProduct, WoodHtmlProps> {
   products: WoodProduct[] = []
   autoNumbering = true
 
-  override async parseExcel() {
+  override async parseExcel(): Promise<WoodProduct[]> {
     // Реализация
   }
 
