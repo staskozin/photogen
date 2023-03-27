@@ -1,15 +1,15 @@
 import Template from '.'
 
-export default class WoodTemplate extends Template<WoodProduct, WoodHtmlProps> {
-  name = 'wood'
+export default class GzhelTemplate extends Template<GzhelProduct, GzhelHtmlProps> {
+  name = 'gzhel'
   width = 1800
   height = 2400
-  products: WoodProduct[] = []
+  products: GzhelProduct[] = []
   autoNumbering = true
 
-  override async parseExcel(): Promise<WoodProduct[]> {
+  override async parseExcel(): Promise<GzhelProduct[]> {
     const sheet = this.workbook.getWorksheet(1)
-    const result: WoodProduct[] = []
+    const result: GzhelProduct[] = []
     sheet.eachRow((row, rowNumber) => {
       if (rowNumber === 1) return
       const values = row.values as Record<string, any>
@@ -34,13 +34,13 @@ export default class WoodTemplate extends Template<WoodProduct, WoodHtmlProps> {
     return result
   }
 
-  override async processProduct(product: WoodProduct) {
+  override async processProduct(product: GzhelProduct) {
     const boxInFilename: Record<string, string> = {
       'Фанерная': 'в фанерной коробке',
       'Картонная': 'в картонной коробке',
-      'Фанерный домик': 'в фанерном домике'
+      'Деревянная': 'в деревянной коробке'
     }
-    const filename = `${product.name} ${boxInFilename[product.box]}`
+    const filename = `${product.name} ${product.collection} ${boxInFilename[product.box]}`
 
     if (product.box !== 'Картонная') {
       // Все на коробке
@@ -84,8 +84,7 @@ export default class WoodTemplate extends Template<WoodProduct, WoodHtmlProps> {
       quantity: product.quantity,
       box: product.box,
       photo: product.photos.back,
-      icon: 'tree',
-      text: '100% натуральное дерево'
+      text: 'Из натуральной глины'
     }, filename)
 
     // Спереди с линейкой
@@ -95,8 +94,8 @@ export default class WoodTemplate extends Template<WoodProduct, WoodHtmlProps> {
       quantity: product.quantity,
       box: product.box,
       photo: product.photos.frontWithRuler,
-      icon: 'shield',
-      text: 'Небьющиеся'
+      icon: 'tree',
+      text: 'Экологично'
     }, filename)
 
     // Сзади с линейкой
@@ -121,7 +120,7 @@ export default class WoodTemplate extends Template<WoodProduct, WoodHtmlProps> {
         'Удобная фанерная<br>подарочная коробка'
         : product.box === 'Картонная' ?
           'Удобная картонная коробка'
-          : 'Красивый фанерный домик'
+          : 'Красивая деревянная<br>подарочная коробка'
     }, filename)
 
     // Коробка со стружкой
@@ -141,16 +140,16 @@ export default class WoodTemplate extends Template<WoodProduct, WoodHtmlProps> {
       quantity: product.quantity,
       box: product.box,
       photo: product.photos.onTree,
-      text: 'Яркие, разноцветные,<br>лакированные'
+      text: product.collection === 'Кобальт' ? 'Не тускнеют' : 'Яркие и разноцветные'
     }, filename)
   }
 }
 
-export type WoodProduct = {
+export type GzhelProduct = {
   name: string
-  collection: string
+  collection: 'Цветная' | 'Кобальт'
   quantity: string
-  box: 'Фанерная' | 'Картонная' | 'Фанерный домик'
+  box: 'Фанерная' | 'Картонная' | 'Деревянная'
   photos: {
     onBox: string
     insideBox: string
@@ -164,11 +163,11 @@ export type WoodProduct = {
   }
 }
 
-type WoodHtmlProps = {
+type GzhelHtmlProps = {
   name: string
-  collection: string
+  collection: 'Цветная' | 'Кобальт'
   quantity: string
-  box: 'Фанерная' | 'Картонная' | 'Фанерный домик'
+  box: 'Фанерная' | 'Картонная' | 'Деревянная'
   photo: string
   icon?: 'paintbrush' | 'tree' | 'check' | 'gift' | 'shield'
   text: string

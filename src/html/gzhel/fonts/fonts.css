@@ -1,0 +1,23 @@
+@font-face {
+  font-family: 'PT Astra Sans';
+  src: url(PT-Astra-Sans_Regular.ttf);
+}
+
+@font-face {
+  font-family: 'PT Astra Sans';
+  src: url(PT-Astra-Sans_Bold.ttf);
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'PT Astra Sans';
+  src: url(PT-Astra-Sans_Italic.ttf);
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'PT Astra Sans';
+  src: url(PT-Astra-Sans_Bold-Italic.ttf);
+  font-weight: bold;
+  font-style: italic;
+}
