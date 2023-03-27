@@ -170,6 +170,6 @@ type WoodHtmlProps = {
   quantity: string
   box: 'Фанерная' | 'Картонная' | 'Фанерный домик'
   photo: string
-  icon?: 'paintbrush' | 'leaf' | 'tree' | 'check' | 'gift' | 'shield'
+  icon?: 'paintbrush' | 'tree' | 'check' | 'gift' | 'shield'
   text: string
 }
