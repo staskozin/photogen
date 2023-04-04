@@ -17,7 +17,7 @@ export default abstract class Template<Product, HtmlProps> {
   protected abstract processProduct(product: Product): Promise<void>
 
   // Объекты, которые нужны в работе шаблона
-  protected workbook!: Excel.Workbook // Объявляется в processExcel
+  protected workbook: Excel.Workbook // Объявляется в processExcel
   private cluster!: Cluster // Объявляется в processPhotos
 
   // Создаёт картинку
@@ -47,6 +47,7 @@ export default abstract class Template<Product, HtmlProps> {
     this.excelPath = excelPath
     this.photosPath = photosPath
     this.resultPath = resultPath
+    this.workbook = new Excel.Workbook()
   }
 
   // Главный метод, который будет вызывать клиент
@@ -57,7 +58,6 @@ export default abstract class Template<Product, HtmlProps> {
 
   // Запуск процесса получения информации из экселя
   private async processExcel(): Promise<void> {
-    this.workbook = new Excel.Workbook()
     await this.workbook.xlsx.readFile(this.excelPath)
     this.products = await this.parseExcel()
   }
