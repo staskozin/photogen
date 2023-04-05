@@ -24,7 +24,7 @@ export default abstract class Template<Product, HtmlProps> {
   protected queueProduct(htmlProps: HtmlProps, filename: string): void {
     const picturePath = this.autoNumbering ? `${this.resultPath}/${filename} - ${this.fileNumber++}.jpg` : `${this.resultPath}/${filename}.jpg`
     this.cluster.queue(null, async ({ page }) => {
-      await page.goto(`file://${path.join(__dirname, '..', 'html', this.name, 'index.html')}?${this.getUrlParams(htmlProps)}`)
+      await page.goto(`file://${path.join(__dirname, this.name, 'html', 'index.html')}?${this.getUrlParams(htmlProps)}`)
       await page.screenshot({ 'fullPage': true, 'path': picturePath, 'quality': 100 })
       await page.close()
     })
@@ -89,11 +89,11 @@ export default abstract class Template<Product, HtmlProps> {
   // Перемещаем фото из photosPath в html/${this.name}/temp
   private movePhotos(): void {
     this.clearPhotos()
-    fse.copySync(this.photosPath, path.join(__dirname, '..', 'html', this.name, 'temp'))
+    fse.copySync(this.photosPath, path.join(__dirname, this.name, 'html', 'temp'))
   }
 
   // Очищаем html/${this.name}/temp
   private clearPhotos(): void {
-    fse.removeSync(path.join(__dirname, '..', 'html', this.name, 'temp'))
+    fse.removeSync(path.join(__dirname, this.name, 'html', 'temp'))
   }
 }

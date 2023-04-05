@@ -1,4 +1,4 @@
-import Template from '.'
+import Template from '..'
 
 export default class GzhelTemplate extends Template<GzhelProduct, GzhelHtmlProps> {
   name = 'gzhel'

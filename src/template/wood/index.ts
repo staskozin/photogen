@@ -1,4 +1,4 @@
-import Template from '.'
+import Template from '..'
 
 export default class WoodTemplate extends Template<WoodProduct, WoodHtmlProps> {
   name = 'wood'
