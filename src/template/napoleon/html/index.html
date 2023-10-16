@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Cormorant';
+    }
+
+    .container {
+      width: 1500px;
+      height: 1500px;
+      box-sizing: border-box;
+    }
+
+    .text {
+      color: #2d0066;
+      display: block;
+      text-align: center;
+      font-style: italic;
+      font-weight: 700;
+      filter: drop-shadow(0px 0px 25px #DCD28C);
+    }
+
+    .bg {
+      position: absolute;
+      z-index: -1;
+      width: 1500px;
+      height: 1500px;
+    }
+
+    .facts {
+      position: absolute;
+      top: 403px;
+      left: 1090px;
+      height: 981px;
+      width: 380px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 90px;
+    }
+
+    .fact {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .fact_icon svg {
+      filter: drop-shadow(0px 0px 25px #DCD28C);
+    }
+
+    .fact__text {
+      font-size: 80px;
+      line-height: 80px;
+    }
+
+    .fact__value {
+      font-size: 158px;
+      line-height: 128px;
+      font-variant-numeric: lining-nums proportional-nums;
+      text-align: center;
+      font-style: normal;
+    }
+
+    .photo {
+      width: 1060px;
+      height: 1060px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      padding-top: 38px;
+      padding-left: 30px;
+    }
+
+    #photo {
+      max-width: 100%;
+      max-height: 100%;
+    }
+
+    #topText,
+    #painting {
+      font-size: 80px;
+      line-height: 80px;
+      font-weight: 600;
+    }
+
+    #topText {
+      padding-top: 30px;
+    }
+
+    #title {
+      margin-top: -11px;
+      margin-bottom: 3px;
+      font-size: 143px;
+      line-height: 143px;
+      font-style: normal;
+    }
+
+    .container_additional .facts,
+    .container_additional .bg,
+    .container_additional #topText,
+    .container_additional #painting {
+      display: none;
+    }
+
+    .container_additional {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .container_additional #title {
+      filter: none;
+      font-size: 100px;
+      line-height: 100px;
+      font-weight: 600;
+      font-style: italic;
+      padding-top: 40px;
+    }
+
+    .container_additional .photo {
+      padding: 0 0 20px 0;
+      width: 1290px;
+      height: 1290px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container container_additional">
+    <img class="bg" src="bg.jpg" alt="">
+    <span class="text" id="topText">Оловянный солдатик</span>
+    <span class="text" id="title"></span>
+    <span class="text" id="painting"></span>
+    <div class="photo">
+      <img src="nophoto.png" alt="" id="photo">
+    </div>
+    <div class="facts">
+      <div class="fact fact_scale">
+        <span class="fact__text text">Масштаб</span>
+        <div class="fact__value text">1:32</div>
+      </div>
+      <div class="fact fact_icon">
+        <svg width="106" height="118" viewBox="0 0 106 118" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M77 44.4557L29 16.7757M6.44 31.4424L53 58.3757L99.56 31.4424M53 112.082V58.3224M101 79.6557V36.9891C100.998 35.1185 100.504 33.2814 99.5682 31.6619C98.6321 30.0425 97.2866 28.6977 95.6667 27.7624L58.3333 6.42906C56.7118 5.49287 54.8724 5 53 5C51.1276 5 49.2882 5.49287 47.6667 6.42906L10.3333 27.7624C8.7134 28.6977 7.36789 30.0425 6.43179 31.6619C5.49569 33.2814 5.00192 35.1185 5 36.9891V79.6557C5.00192 81.5263 5.49569 83.3634 6.43179 84.9829C7.36789 86.6023 8.7134 87.9471 10.3333 88.8824L47.6667 110.216C49.2882 111.152 51.1276 111.645 53 111.645C54.8724 111.645 56.7118 111.152 58.3333 110.216L95.6667 88.8824C97.2866 87.9471 98.6321 86.6023 99.5682 84.9829C100.504 83.3634 100.998 81.5263 101 79.6557Z"
+            stroke="#2D0066" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+        <span class="fact__text text">Надёжная упаковка</span>
+      </div>
+      <div class="fact fact_icon fact_painting">
+        <svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M47.9865 74.5954C48.0398 80.4824 43.2931 85.3028 37.3944 85.3402C31.501 85.3881 26.7009 80.6477 26.6689 74.7607C26.6156 68.8684 31.357 64.0693 37.2397 64.0106C43.1384 63.9733 47.9545 68.7191 47.9865 74.5954ZM42.7704 53.3405C36.8824 53.3832 32.061 48.648 32.0236 42.7451C31.9756 36.8634 36.701 32.059 42.6051 32.0216C48.4825 31.9683 53.3145 36.6981 53.3358 42.5904C53.3998 48.4934 48.6425 53.2872 42.7704 53.3405ZM85.3361 31.9363C85.3575 37.8126 80.6374 42.6438 74.7494 42.6811C68.8507 42.7344 64.0399 37.9939 64.0026 32.107C63.9439 26.2093 68.6853 21.4102 74.5894 21.3622C80.4614 21.3302 85.2828 26.06 85.3361 31.9363ZM21.3355 116.439C45.7998 118.465 37.037 92.4856 59.6719 92.2456L69.4747 100.425C71.9173 129.951 35.7943 136.536 21.3355 116.439ZM127.529 26.5186C129.411 23.1965 125.241 19.7305 122.328 22.1834C100.83 40.8719 66.0826 86.0227 66.0826 86.0227L75.0427 93.488C75.0427 93.488 113.094 51.0428 127.529 26.5186ZM29.0316 104.126C17.9168 94.4212 10.7914 80.2424 10.6688 64.4159C10.4341 35.0344 34.1677 10.932 63.5759 10.6921C84.0455 10.5801 94 13.5082 105.5 25.5127L112.5 18.1838C96 2.00012 85 0.0219727 63.4853 0.0219727C28.1623 0.315254 -0.275325 29.1688 0.0020114 64.5012C0.124679 80.0291 5.77806 94.2026 15.0582 105.214C20.1675 107.837 26.3809 106.968 29.0316 104.126ZM90.8159 87.9632C107.5 108.003 90.8159 112.002 78.3761 115.25C76.7547 120.113 74.0934 124.427 71.048 127.573C99.0749 124.421 121 109.502 98 79.5061C95.552 83.1588 93.216 85.8889 90.8159 87.9632Z"
+            fill="#2D0066" />
+        </svg>
+        <span class="fact__text text">Ручная роспись</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /*
+     * GET-параметры:
+     * isMain
+     * title
+     * photo
+     * painting
+     */
+    const params = new URLSearchParams(location.search)
+
+    // isMain
+    if (params.get('isMain') === 'Да') {
+      document.querySelector(".container").classList.remove("container_additional")
+      if (params.get('painting') === 'некрашеный')
+        document.querySelector(".fact_painting").style.display = 'none'
+    }
+
+    // title
+    title.innerHTML = params.get('title')
+
+    // photo
+    const p = params.get('photo')
+    if (p === 'undefined' || !p)
+      photo.src = 'nophoto.png'
+    else
+      photo.src = `temp/${params.get('photo')}`
+
+    // painting
+    painting.innerHTML = params.get('painting')
+    if (params.get('painting') !== 'некрашеный')
+      painting.innerHTML += ' покрас'
+  </script>
+</body>
+
+</html>
