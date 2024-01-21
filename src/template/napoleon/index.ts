@@ -1,7 +1,7 @@
 import Template from '..'
 
 export default class NapoleonTemplate extends Template<NapoleonProduct, NapoleonHtmlProps> {
-  name = 'christmas-toys'
+  name = 'napoleon'
   width = 1500
   height = 1500
   products: NapoleonProduct[] = []
@@ -15,12 +15,10 @@ export default class NapoleonTemplate extends Template<NapoleonProduct, Napoleon
       const values = row.values as Record<string, any>
       tmp[values[1]] = {
         id: values[1],
-        name: values[2],
-        photo: values[4],
-        painting: values[3],
-        factText: values[5],
-        factValue: values[6].toString(),
-        factValueOnTop: values[7],
+        type: values[2],
+        name: values[3],
+        painting: values[4],
+        photo: values[5],
         additional: []
       }
     })
@@ -46,6 +44,8 @@ export default class NapoleonTemplate extends Template<NapoleonProduct, Napoleon
     const filename = `${product.id} - ${product.name}`
     this.queueProduct({
       isMain: 'Да',
+      id: product.id,
+      type: product.type,
       title: product.name,
       painting: product.painting,
       photo: product.photo
@@ -63,6 +63,7 @@ export default class NapoleonTemplate extends Template<NapoleonProduct, Napoleon
 export type NapoleonProduct = {
   id: string
   name: string
+  type: 'набор' | 'солдатик' | 'диорама'
   painting: 'некрашеный' | 'сувенирный' | 'полуколлекционный' | 'коллекционный'
   photo: string
   additional: Array<AdditionalPhoto>
@@ -75,10 +76,9 @@ type AdditionalPhoto = {
 
 type NapoleonHtmlProps = {
   isMain?: 'Да' | 'Нет'
+  type?: 'набор' | 'солдатик' | 'диорама'
+  id?: string
   title: string
   photo: string
   painting?: 'некрашеный' | 'сувенирный' | 'полуколлекционный' | 'коллекционный'
-  factText?: string
-  factValue?: string
-  factValueOnTop?: 'Да' | 'Нет'
 }

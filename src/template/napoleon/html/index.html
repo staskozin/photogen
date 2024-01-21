@@ -9,6 +9,7 @@
     body {
       margin: 0;
       font-family: 'Cormorant';
+      font-variant-numeric: lining-nums proportional-nums;
     }
 
     .container {
@@ -35,14 +36,14 @@
 
     .facts {
       position: absolute;
-      top: 403px;
+      top: 382px;
       left: 1090px;
-      height: 981px;
+      height: 1022px;
       width: 380px;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      gap: 90px;
+      gap: 54px;
     }
 
     .fact {
@@ -54,6 +55,7 @@
 
     .fact_icon svg {
       filter: drop-shadow(0px 0px 25px #DCD28C);
+      margin-bottom: -27px;
     }
 
     .fact__text {
@@ -64,7 +66,6 @@
     .fact__value {
       font-size: 158px;
       line-height: 128px;
-      font-variant-numeric: lining-nums proportional-nums;
       text-align: center;
       font-style: normal;
     }
@@ -105,7 +106,6 @@
     }
 
     .container_additional .facts,
-    .container_additional .bg,
     .container_additional #topText,
     .container_additional #painting {
       display: none;
@@ -119,12 +119,18 @@
     }
 
     .container_additional #title {
-      filter: none;
       font-size: 100px;
       line-height: 100px;
       font-weight: 600;
       font-style: italic;
       padding-top: 40px;
+      margin: 0;
+    }
+
+    .container_additional #title.title_double {
+      font-size: 82px;
+      line-height: 82px;
+      padding-top: 10px;
     }
 
     .container_additional .photo {
@@ -145,17 +151,59 @@
       <img src="nophoto.png" alt="" id="photo">
     </div>
     <div class="facts">
+      <div class="fact">
+        <span class="fact__text text" id="number"></span>
+      </div>
       <div class="fact fact_scale">
         <span class="fact__text text">Масштаб</span>
         <div class="fact__value text">1:32</div>
       </div>
       <div class="fact fact_icon">
-        <svg width="106" height="118" viewBox="0 0 106 118" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path
-            d="M77 44.4557L29 16.7757M6.44 31.4424L53 58.3757L99.56 31.4424M53 112.082V58.3224M101 79.6557V36.9891C100.998 35.1185 100.504 33.2814 99.5682 31.6619C98.6321 30.0425 97.2866 28.6977 95.6667 27.7624L58.3333 6.42906C56.7118 5.49287 54.8724 5 53 5C51.1276 5 49.2882 5.49287 47.6667 6.42906L10.3333 27.7624C8.7134 28.6977 7.36789 30.0425 6.43179 31.6619C5.49569 33.2814 5.00192 35.1185 5 36.9891V79.6557C5.00192 81.5263 5.49569 83.3634 6.43179 84.9829C7.36789 86.6023 8.7134 87.9471 10.3333 88.8824L47.6667 110.216C49.2882 111.152 51.1276 111.645 53 111.645C54.8724 111.645 56.7118 111.152 58.3333 110.216L95.6667 88.8824C97.2866 87.9471 98.6321 86.6023 99.5682 84.9829C100.504 83.3634 100.998 81.5263 101 79.6557Z"
-            stroke="#2D0066" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" />
+        <svg width="156" height="167" viewBox="0 0 156 167" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g filter="url(#filter0_d_48_13)">
+            <path
+              d="M102 69.4557L54.1675 42M31.44 56.4424L78 83.3757L124.56 56.4424M78 137.082V83.3224M126 104.656V61.9891C125.998 60.1185 125.504 58.2814 124.568 56.6619C123.632 55.0425 122.287 53.6977 120.667 52.7624L83.3333 31.4291C81.7118 30.4929 79.8724 30 78 30C76.1276 30 74.2882 30.4929 72.6667 31.4291L35.3333 52.7624C33.7134 53.6977 32.3679 55.0425 31.4318 56.6619C30.4957 58.2814 30.0019 60.1185 30 61.9891V104.656C30.0019 106.526 30.4957 108.363 31.4318 109.983C32.3679 111.602 33.7134 112.947 35.3333 113.882L72.6667 135.216C74.2882 136.152 76.1276 136.645 78 136.645C79.8724 136.645 81.7118 136.152 83.3333 135.216L120.667 113.882C122.287 112.947 123.632 111.602 124.568 109.983C125.504 108.363 125.998 106.526 126 104.656Z"
+              stroke="#2D0066" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" />
+          </g>
+          <defs>
+            <filter id="filter0_d_48_13" x="0.5" y="0.5" width="155" height="166.083" filterUnits="userSpaceOnUse"
+              color-interpolation-filters="sRGB">
+              <feFlood flood-opacity="0" result="BackgroundImageFix" />
+              <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                result="hardAlpha" />
+              <feOffset />
+              <feGaussianBlur stdDeviation="12.5" />
+              <feColorMatrix type="matrix" values="0 0 0 0 0.862745 0 0 0 0 0.823529 0 0 0 0 0.54902 0 0 0 1 0" />
+              <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_48_13" />
+              <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_48_13" result="shape" />
+            </filter>
+          </defs>
         </svg>
         <span class="fact__text text">Надёжная упаковка</span>
+      </div>
+      <div class="fact fact_icon">
+        <svg width="156" height="157" viewBox="0 0 156 157" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g filter="url(#filter0_d_167_113)">
+            <path
+              d="M126 127L103 104M73 51C84 51 93 60 93 71M115 72.5C115 95.9721 95.9721 115 72.5 115C49.0279 115 30 95.9721 30 72.5C30 49.0279 49.0279 30 72.5 30C95.9721 30 115 49.0279 115 72.5Z"
+              stroke="#2D0066" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" />
+          </g>
+          <defs>
+            <filter id="filter0_d_167_113" x="0.5" y="0.5" width="155" height="156" filterUnits="userSpaceOnUse"
+              color-interpolation-filters="sRGB">
+              <feFlood flood-opacity="0" result="BackgroundImageFix" />
+              <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                result="hardAlpha" />
+              <feOffset />
+              <feGaussianBlur stdDeviation="12.5" />
+              <feColorMatrix type="matrix" values="0 0 0 0 0.862745 0 0 0 0 0.823529 0 0 0 0 0.54902 0 0 0 1 0" />
+              <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_167_113" />
+              <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_167_113" result="shape" />
+            </filter>
+          </defs>
+        </svg>
+
+        <span class="fact__text text">Высокая детализация</span>
       </div>
       <div class="fact fact_icon fact_painting">
         <svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -172,6 +220,8 @@
     /*
      * GET-параметры:
      * isMain
+     * id
+     * type
      * title
      * photo
      * painting
@@ -185,13 +235,21 @@
         document.querySelector(".fact_painting").style.display = 'none'
     }
 
+    // id
+    number.innerHTML = `№${params.get('id')} из 25`
+
+
+
     // title
     title.innerHTML = params.get('title')
+    if (params.get('title').includes('<br>')) {
+      title.classList.add('title_double')
+    }
 
     // photo
     const p = params.get('photo')
     if (p === 'undefined' || !p)
-      photo.src = 'nophoto.png'
+      photo.src = 'nap.png'
     else
       photo.src = `temp/${params.get('photo')}`
 
@@ -199,6 +257,19 @@
     painting.innerHTML = params.get('painting')
     if (params.get('painting') !== 'некрашеный')
       painting.innerHTML += ' покрас'
+
+    // type
+    if (params.get('type') === 'солдатик') {
+      topText.innerHTML = 'Оловянный солдатик'
+    }
+    else if (params.get('type') === 'диорама') {
+      if (params.get('painting') === 'некрашеный')
+        painting.innerHTML = 'некрашеная'
+      topText.innerHTML = 'Оловянная диорама'
+    }
+    else {
+      topText.innerHTML = 'Набор оловянных солдатиков'
+    }
   </script>
 </body>
 
