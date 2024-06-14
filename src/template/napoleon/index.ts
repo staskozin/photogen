@@ -54,7 +54,8 @@ export default class NapoleonTemplate extends Template<NapoleonProduct, Napoleon
     product.additional.forEach((p: AdditionalPhoto) => {
       this.queueProduct({
         title: p.title,
-        photo: p.photo
+        photo: p.photo,
+        painting: product.painting
       }, filename)
     })
   }
@@ -80,5 +81,5 @@ type NapoleonHtmlProps = {
   id?: string
   title: string
   photo: string
-  painting?: 'некрашеный' | 'сувенирный' | 'полуколлекционный' | 'коллекционный'
+  painting: 'некрашеный' | 'сувенирный' | 'полуколлекционный' | 'коллекционный'
 }
