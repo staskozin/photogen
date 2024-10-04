@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Pobeda';
+      font-variant-numeric: lining-nums;
+    }
+
+    .container {
+      width: 1500px;
+      height: 1500px;
+      border-radius: 100px;
+      box-sizing: border-box;
+    }
+
+    .bg {
+      position: absolute;
+      z-index: -1;
+      width: 1500px;
+      height: 1500px;
+    }
+
+    .text {
+      color: #da2b3a;
+      display: block;
+      text-align: center;
+      filter: drop-shadow(0px 0px 25px rgba(215, 144, 6, .18));
+      font-weight: bold;
+    }
+
+    #title {
+      margin: 0 0 -2px;
+      font-size: 143px;
+    }
+
+    #topText {
+      padding-top: 40px;
+    }
+
+    #topText,
+    #painting {
+      font-size: 80px;
+    }
+
+    .photo {
+      width: 1060px;
+      height: 1060px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      line-height: 1;
+
+      padding-top: 12px;
+      padding-left: 30px;
+    }
+
+    #photo {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      width: 100%;
+      height: 100%;
+    }
+
+    .facts {
+      position: absolute;
+      top: 397px;
+      left: 1090px;
+      height: 1060px;
+      width: 380px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 60px;
+    }
+
+    .fact {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .fact_icon svg {
+      filter: drop-shadow(0px 0px 25px rgba(215, 144, 6, .18));
+      margin-bottom: -27px;
+    }
+
+    .fact__text {
+      font-size: 80px;
+      line-height: 80px;
+    }
+
+    .fact__value {
+      font-size: 158px;
+      line-height: 128px;
+      text-align: center;
+      font-style: normal;
+    }
+
+    .container_additional .facts,
+    .container_additional #topText,
+    .container_additional #painting {
+      display: none;
+    }
+
+    .container_additional {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .container_additional #title {
+      font-size: 100px;
+      line-height: 110px;
+      padding-top: 40px;
+      margin: 0;
+    }
+
+    .container_additional #title.title_double {
+      padding-top: 10px;
+      font-size: 75px;
+      line-height: 1;
+    }
+
+    .container_additional .photo {
+      margin-top: 10px;
+      padding: 0 0 20px 0;
+      width: 1300px;
+      height: 1300px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container container_additional">
+    <img class="bg" src="bg-nekr.png" alt="">
+    <span class="text" id="topText">Набор оловянных солдатиков</span>
+    <span class="text" id="title"></span>
+    <span class="text" id="painting"></span>
+    <div class="photo">
+      <img src="nophoto.png" alt="" id="photo">
+    </div>
+
+    <div class="facts">
+      <div class="fact fact_scale">
+        <span class="fact__text text">Масштаб</span>
+        <div class="fact__value text">1:32</div>
+      </div>
+
+      <div class="fact fact_icon fact_package">
+        <svg class="fact__icon fact__icon_gift" style="margin-bottom: 0;display:none" width="128" height="128"
+          viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M106.667 64V117.333H21.3334V64M64.0001 117.333V37.3333M64.0001 37.3333H40.0001C36.4639 37.3333 33.0725 35.9286 30.572 33.4281C28.0715 30.9276 26.6667 27.5362 26.6667 24C26.6667 20.4638 28.0715 17.0724 30.572 14.5719C33.0725 12.0714 36.4639 10.6667 40.0001 10.6667C58.6667 10.6667 64.0001 37.3333 64.0001 37.3333ZM64.0001 37.3333H88.0001C91.5363 37.3333 94.9277 35.9286 97.4282 33.4281C99.9287 30.9276 101.333 27.5362 101.333 24C101.333 20.4638 99.9287 17.0724 97.4282 14.5719C94.9277 12.0714 91.5363 10.6667 88.0001 10.6667C69.3334 10.6667 64.0001 37.3333 64.0001 37.3333ZM10.6667 37.3333H117.333V64H10.6667V37.3333Z"
+            stroke="#da2b3a" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+        <svg class="fact__icon fact__icon_box" style="margin-bottom: 0;" width="108" height="119" viewBox="0 0 108 119"
+          fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M78 45.4557L30 17.7757M7.44 32.4424L54 59.3757L100.56 32.4424M54 113.082V59.3224M102 80.6557V37.9891C101.998 36.1185 101.504 34.2814 100.568 32.6619C99.6321 31.0425 98.2866 29.6977 96.6667 28.7624L59.3333 7.42906C57.7118 6.49287 55.8724 6 54 6C52.1276 6 50.2882 6.49287 48.6667 7.42906L11.3333 28.7624C9.7134 29.6977 8.36789 31.0425 7.43179 32.6619C6.49569 34.2814 6.00192 36.1185 6 37.9891V80.6557C6.00192 82.5263 6.49569 84.3634 7.43179 85.9829C8.36789 87.6023 9.7134 88.9471 11.3333 89.8824L48.6667 111.216C50.2882 112.152 52.1276 112.645 54 112.645C55.8724 112.645 57.7118 112.152 59.3333 111.216L96.6667 89.8824C98.2866 88.9471 99.6321 87.6023 100.568 85.9829C101.504 84.3634 101.998 82.5263 102 80.6557Z"
+            stroke="#da2b3a" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+        <span class="fact__text text" style="margin-bottom: -35px;">Надёжная картонная коробка</span>
+      </div>
+
+      <div class="fact fact_icon fact_detail">
+        <svg width="156" height="157" viewBox="0 0 156 157" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M126 127L103 104M73 51C84 51 93 60 93 71M115 72.5C115 95.9721 95.9721 115 72.5 115C49.0279 115 30 95.9721 30 72.5C30 49.0279 49.0279 30 72.5 30C95.9721 30 115 49.0279 115 72.5Z"
+            stroke="#da2b3a" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+
+        <span class="fact__text text">Высокая детализация</span>
+      </div>
+
+      <div class="fact fact_icon fact_painting">
+        <svg width="110" height="110" style="margin-bottom: 2px;" viewBox="0 0 128 128" fill="none"
+          xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M47.9865 74.5954C48.0398 80.4824 43.2931 85.3028 37.3944 85.3402C31.501 85.3881 26.7009 80.6477 26.6689 74.7607C26.6156 68.8684 31.357 64.0693 37.2397 64.0106C43.1384 63.9733 47.9545 68.7191 47.9865 74.5954ZM42.7704 53.3405C36.8824 53.3832 32.061 48.648 32.0236 42.7451C31.9756 36.8634 36.701 32.059 42.6051 32.0216C48.4825 31.9683 53.3145 36.6981 53.3358 42.5904C53.3998 48.4934 48.6425 53.2872 42.7704 53.3405ZM85.3361 31.9363C85.3575 37.8126 80.6374 42.6438 74.7494 42.6811C68.8507 42.7344 64.0399 37.9939 64.0026 32.107C63.9439 26.2093 68.6853 21.4102 74.5894 21.3622C80.4614 21.3302 85.2828 26.06 85.3361 31.9363ZM21.3355 116.439C45.7998 118.465 37.037 92.4856 59.6719 92.2456L69.4747 100.425C71.9173 129.951 35.7943 136.536 21.3355 116.439ZM127.529 26.5186C129.411 23.1965 125.241 19.7305 122.328 22.1834C100.83 40.8719 66.0826 86.0227 66.0826 86.0227L75.0427 93.488C75.0427 93.488 113.094 51.0428 127.529 26.5186ZM29.0316 104.126C17.9168 94.4212 10.7914 80.2424 10.6688 64.4159C10.4341 35.0344 34.1677 10.932 63.5759 10.6921C84.0455 10.5801 94 13.5082 105.5 25.5127L112.5 18.1838C96 2.00012 85 0.0219727 63.4853 0.0219727C28.1623 0.315254 -0.275325 29.1688 0.0020114 64.5012C0.124679 80.0291 5.77806 94.2026 15.0582 105.214C20.1675 107.837 26.3809 106.968 29.0316 104.126ZM90.8159 87.9632C107.5 108.003 90.8159 112.002 78.3761 115.25C76.7547 120.113 74.0934 124.427 71.048 127.573C99.0749 124.421 121 109.502 98 79.5061C95.552 83.1588 93.216 85.8889 90.8159 87.9632Z"
+            fill="#da2b3a" />
+        </svg>
+        <span class="fact__text text">Ручная роспись</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /*
+     * GET-параметры:
+     * isMain?: 'Да' | 'Нет'
+     * topText?: string
+     * title: string
+     * painting?: 'Некрашеный' | 'Сувенирный' | 'Полуколлекционный' | 'Коллекционный'
+     * quantity?: number
+     * photo: string
+     * package?: 'Надёжная' | 'Подарочная'
+     * factText?: string
+     * factValue?: string
+     * factUnit?: string
+     * factValueOnTop?: 'Да' | 'Нет'
+     */
+    const params = new URLSearchParams(location.search)
+
+    // isMain
+    if (params.get('isMain') === 'Да') {
+      document.querySelector(".container").classList.remove("container_additional")
+    }
+
+    // topText
+    topText.textContent = params.get('topText')
+
+    // title
+    title.innerHTML = params.get('title')
+    if (params.get('title').includes('<br>')) {
+      title.classList.add('title_double')
+    }
+
+    // painting
+    if (params.get('painting') !== 'Некрашеный') {
+      document.querySelector('.fact_detail').style.display = 'none'
+    } else {
+      document.querySelector('.fact_painting').style.display = 'none'
+    }
+    const paintingNames = {
+      'Некрашеный': 'некрашеных',
+      'Сувенирный': 'сувенирный покрас',
+      'Полуколлекционный': 'полуколлекционный покрас',
+      'Коллекционный': 'коллекционный покрас'
+    }
+    painting.innerHTML = paintingNames[params.get('painting')]
+
+    // quantity
+    if (params.get('quantity')) {
+      painting.innerHTML += ", " + params.get('quantity') + " шт."
+    }
+
+    // photo
+    const p = params.get('photo')
+    if (p === 'undefined' || !p)
+      photo.src = 'nophoto.png'
+    else
+      photo.src = `temp/${params.get('photo')}`
+
+    // package
+    if (params.get('package') === 'Подарочная') {
+      document.querySelector('.fact_package span').innerText = 'Подарочная коробка'
+      document.querySelector('.fact_package span').style.marginBottom = 0
+      document.querySelector('.fact__icon_gift').style.display = 'block'
+      document.querySelector('.fact__icon_box').style.display = 'none'
+    }
+
+    const backgrounds = {
+      'Некрашеный': 'nekr',
+      'Сувенирный': 'suv',
+      'Полуколлекционный': 'p1',
+      'Коллекционный': 'k'
+    }
+    document.querySelector('.bg').src = 'bg-' + backgrounds[params.get('painting')] + '.png'
+  </script>
+</body>
+
+</html>
