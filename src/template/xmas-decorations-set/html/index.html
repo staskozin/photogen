@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+  <title>Инфографика — Ёлочные игрушки 3:4</title>
+
+  <style>
+    @font-face {
+      font-family: Dela;
+      src: url(font/DelaGothicOne-Regular.ttf);
+    }
+
+    @font-face {
+      font-family: Rubik;
+      src: url(font/Rubik-VariableFont_wght.ttf);
+    }
+
+    :root {
+      --color: #364596;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      width: 1500px;
+      height: 2000px;
+      background-image: url(bg.png);
+      background-repeat: no-repeat;
+    }
+
+    span {
+      text-shadow: 5px 5px 20px rgba(23, 30, 67, 0.15), 0px 0px 30px #FFFFFF, 0px 0px 30px #FFFFFF;
+      text-align: center;
+    }
+
+    #text,
+    #textTop,
+    #textBottom {
+      display: block;
+    }
+
+    #textTop {
+      margin-top: 14px;
+      margin-bottom: -6px;
+    }
+
+    #textBottom {
+      margin-top: 25px;
+    }
+
+    .basic-text {
+      font-family: Rubik;
+      font-weight: 300;
+      font-size: 64px;
+    }
+
+    .accent-text {
+      font-family: Rubik;
+      font-weight: 700;
+      font-size: 96px;
+      line-height: 110%;
+      color: var(--color);
+    }
+
+    .main-text {
+      font-family: Dela;
+      font-size: 126px;
+      line-height: 105%;
+      color: var(--color);
+    }
+
+    #info {
+      display: flex;
+      gap: 80px;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
+    #arrow {
+      z-index: 1;
+      position: relative;
+    }
+
+    #arrow,
+    #photo {
+      filter: drop-shadow(10px 10px 40px rgba(23, 30, 67, 0.15)) drop-shadow(0px 0px 30px #FFFFFF) drop-shadow(0px 0px 30px #FFFFFF);
+    }
+
+    #photo {
+      width: 1500px;
+      height: 1500px;
+      background-image: url("example.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      margin: 33px auto 0;
+    }
+
+    #photo.small {
+      width: 1435px;
+      height: 1435px;
+      margin-top: 0;
+    }
+
+    .additional {
+      display: flex;
+      flex-direction: column-reverse;
+    }
+
+    .additional #photo {
+      margin-top: 0;
+    }
+
+    .additional #text {
+      height: 424px;
+      margin-top: 38px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .additional #textTop,
+    .additional #textBottom,
+    .additional #info {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="container">
+    <span
+      id="textTop"
+      class="basic-text"
+    ></span>
+    <span
+      id="text"
+      class="main-text"
+    ></span>
+    <span
+      id="textBottom"
+      class="basic-text"
+    ></span>
+
+    <div id="info">
+      <div>
+        <span
+          id="quantity"
+          class="accent-text"
+        ></span>
+        <span
+          id="pieces"
+          class="basic-text"
+        ></span>
+      </div>
+      <div>
+        <img
+          id="arrow"
+          src="arrow.png"
+        >
+        <span
+          id="height"
+          class="accent-text"
+        ></span>
+      </div>
+    </div>
+
+    <div id="photo"></div>
+  </div>
+  <script>
+    /*
+     * GET-параметры:
+     * isMain - Является ли картинка главной
+     * text - Большой цветной текст
+     * photo - Путь к фото
+     * color - цвет текста в hex-формате
+     * 
+     * Только для isMain = true:
+     * textTop - Текст сверху
+     * textBottom - Текст снизу
+     * quantity - Количество игрушек в наборе
+     * height - высота игрушки
+     */
+    const params = new URLSearchParams(location.search)
+
+    text.innerHTML = params.get("text")
+    document.documentElement.style.setProperty("--color", "#" + params.get("color"));
+    photo.style.backgroundImage = "url(temp/" + params.get("photo") + ")"
+
+    if (params.get("text").includes("<br>")) {
+      photo.classList.add("small")
+    }
+
+    if (params.get("isMain") === "Да") {
+      textTop.innerHTML = params.get("textTop")
+      textBottom.innerHTML = params.get("textBottom")
+      height.innerHTML = params.get("height")
+      quantity.innerHTML = params.get("quantity")
+      pieces.innerHTML = "&nbsp;" + declension("штука", "штук", "штуки", params.get("quantity"))
+    } else {
+      container.classList.add("additional")
+      text.classList.remove("main-text")
+      text.classList.add("accent-text")
+      photo.classList.remove("small")
+    }
+
+    function declension(oneNominative, severalGenitive, severalNominative, number) {
+      number = number % 100;
+      if (number <= 14 && number >= 11)
+        return severalGenitive
+      if ((number %= 10) < 5) {
+        if (number > 2)
+          return severalNominative
+        if (number === 1)
+          return oneNominative
+        if (number === 0)
+          return severalGenitive
+        return severalNominative
+      }
+      else
+        return severalGenitive
+    }
+  </script>
+</body>
+
+</html>
