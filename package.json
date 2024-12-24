@@ -16,8 +16,8 @@
     "commander": "^9.4.1",
     "exceljs": "^4.3.0",
     "fs-extra": "^11.1.0",
-    "puppeteer": "^19.1.0",
-    "puppeteer-cluster": "^0.23.0"
+    "puppeteer": "^23.11.1",
+    "puppeteer-cluster": "^0.24.0"
   },
   "devDependencies": {
     "@types/fs-extra": "^11.0.1",

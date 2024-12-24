@@ -69,7 +69,7 @@ export default abstract class Template<Product, HtmlProps> {
       maxConcurrency: 5,
       puppeteerOptions: {
         defaultViewport: { width: this.width, height: this.height },
-        headless: true
+        headless: false,
       }
     })
 
