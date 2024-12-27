@@ -190,7 +190,7 @@
 
     text.innerHTML = params.get("text")
     document.documentElement.style.setProperty("--color", "#" + params.get("color"));
-    photo.style.backgroundImage = "url(temp/" + params.get("photo") + ")"
+    photo.style.backgroundImage = "url('temp/" + params.get("photo") + "')"
 
     if (params.get("text").includes("<br>")) {
       photo.classList.add("small")
