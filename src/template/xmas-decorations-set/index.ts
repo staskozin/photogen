@@ -9,7 +9,7 @@ export default class XmasDecorationsSetTemplate extends Template<XmasDecorations
 
   override async parseExcel(): Promise<XmasDecorationsSetProduct[]> {
     const tmp: Record<string, any> = {}
-    const mainSheet = this.workbook.getWorksheet(1)
+    const mainSheet = this.workbook.getWorksheet(1)!
     mainSheet.eachRow((row, rowNumber) => {
       if (rowNumber === 1) return
       const values = row.values as Record<string, any>
@@ -26,7 +26,7 @@ export default class XmasDecorationsSetTemplate extends Template<XmasDecorations
       }
     })
 
-    const additionalSheet = this.workbook.getWorksheet('Доп. фото')
+    const additionalSheet = this.workbook.getWorksheet('Доп. фото')!
     additionalSheet.eachRow((row, rowNumber) => {
       if (rowNumber === 1) return
       const values = row.values as Record<string, any>
