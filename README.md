@@ -27,6 +27,10 @@
 node main.js -t wood -e ./wood.xlsx -p ./photos -r ./result
 ```
 
+```shell
+node -r tsconfig-paths/register -r ts-node/register ./src/main.ts -t xmas-decorations-set -e D:/photogen/xmas-decorations-set2.xlsx -p D:/photogen/img/ -r D:/photogen/result/
+```
+
 ## Как создать шаблон
 
 ### 1. Подготовка
