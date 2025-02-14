@@ -3,7 +3,7 @@ import Template from '..'
 export default class XmasDecorationsSetTemplate extends Template<XmasDecorationsSetProduct, XmasDecorationsSetHtmlProps> {
   name = 'xmas-decorations-set'
   width = 1500
-  height = 1500
+  height = 2000
   products: XmasDecorationsSetProduct[] = []
   autoNumbering = true
 
