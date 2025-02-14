@@ -24,11 +24,11 @@
 ### Пример
 
 ```shell
-node main.js -t wood -e ./wood.xlsx -p ./photos -r ./result
+node main.js -t xmas-decorations-set -e ./xmas-decorations-set.xlsx -p ./photos -r ./result
 ```
 
 ```shell
-node -r tsconfig-paths/register -r ts-node/register ./src/main.ts -t xmas-decorations-set -e D:/photogen/xmas-decorations-set2.xlsx -p D:/photogen/img/ -r D:/photogen/result/
+node -r tsconfig-paths/register -r ts-node/register ./src/main.ts -t xmas-decorations-set -e D:/photogen/xmas-decorations-set.xlsx -p D:/photogen/img/ -r D:/photogen/result/
 ```
 
 ## Как создать шаблон
@@ -37,11 +37,11 @@ node -r tsconfig-paths/register -r ts-node/register ./src/main.ts -t xmas-decora
 
 Для начала, нужно представить, как будет выглядеть макет, сколько картинок будет на один товар, какая информация будет на этих картинках и т.д. То есть, максимально подробно описать шаблон. Лучше всего в виде макета в фигме, чтобы не пришлось дизайнить в процессе вёрстки HTML.
 
-Например, был придуман такой макет для наборов деревянных ёлочных игрушек:
+Например, был придуман такой макет для наборов ёлочных игрушек:
 
 <img title="" src="./readme/template-maket.jpg" alt="Макет шаблона" data-align="left">
 
-Пусть шаблон называется `wood` и разрешение картинки равно 1800×2400 пикселей.
+Пусть шаблон называется `xmas-decorations-set` и разрешение картинки равно 1500×2000 пикселей.
 
 Далее, нужно описать структуру эксель-файла с параметрами, необходимыми шаблону. Его будут заполнять пользователи.
 
@@ -49,7 +49,7 @@ node -r tsconfig-paths/register -r ts-node/register ./src/main.ts -t xmas-decora
 
 <img src="./readme/excel-structure.png" title="" alt="Структура эксель-таблицы" data-align="left">
 
-Всё, начиная со столбца `E`, является путями к фотографиям. При запуске программы пользователь укажет путь к папке с фотографиями, корнем считается она.
+В столбце `G` находятся пути к фотографиям. При запуске программы пользователь укажет путь к папке с фотографиями, корнем считается она.
 
 Дальше, нужно будет создать HTML-шаблон и написать класс, задачей которого будет передача информации из эксель-файла в веб-страницу.
 
@@ -57,71 +57,72 @@ node -r tsconfig-paths/register -r ts-node/register ./src/main.ts -t xmas-decora
 
 <img src="./readme/file-structure.png" title="" alt="Файловая структура шаблона" data-align="left">
 
-`wood.xlsx` — пример шаблона, в коде никак не используется. Остальные файлы необходимы, подробности о них далее.
+`xmas-decorations-set.xlsx` — пример шаблона, в коде никак не используется. Остальные файлы необходимы, подробности о них далее.
 
-В папке `template` нужно создать папку с названием шаблона, в нашем случае, `wood`.
+В папке `template` нужно создать папку с названием шаблона, в нашем случае, `xmas-decorations-set`.
 
 ### 2. Создание HTML-шаблона
 
-В папке `template/wood` создать папку `html`, в которой обязательно должен быть файл `index.html`.
+В папке `template/xmas-decorations-set` создать папку `html`, в которой обязательно должен быть файл `index.html`.
 
 В папке будет автоматически создаваться временная папка `temp`, в которую скопируются все фотографии из папки, указанной пользователем. Поэтому, путь к фото в `index.html` следует указывать с `temp/` в начале. Не надо называть так свою папку, потому что `temp` автоматически удаляется.
 
 Необходимые параметры для шаблона должны приниматься через GET-параметры. Например, в нашем шаблоне есть следующие параметры:
 
-| Название   | Описание                               |
-| ---------- | -------------------------------------- |
-| name       | Наименование товара                    |
-| collection | Коллекция, к которой принадлежит товар |
-| quantity   | Количество товаров в упаковке          |
-| box        | Вид коробки                            |
-| photo      | Путь к фото                            |
-| icon       | Иконка на «ленточке». Необязательно.   |
-| text       | Текст на «ленточке»                    |
+| Название | Описание |
+| - | - |
+| textTop | Текст сверху названия |
+| text | Название товара |
+| textBottom | Текст снизу названия |
+| quantity | Кол-во игрушек в наборе |
+| height | Высота игрушек в наборе |
+| photo | Путь к фото |
+| color | Цвет текста |
 
 Значит, адрес страницы будет выглядеть примерно так:
 
-`.../wood/html/index.html?name=Имя&collection=Коллекция...`
+`.../xmas-decorations-set/html/index.html?text=Восточный<br>гороскоп&textTop=Набор...`
 
 ### 3. Создание класса шаблона
 
-В папке `template/wood`, создать файл `index.ts`.
+В папке `template/xmas-decorations-set`, создать файл `index.ts`.
 
 Начать стоит с типов, так как их описать проще всего. Будут использоваться два типа: тип для входных параметров HTML-шаблона и тип, описывающий товар. Обычно, один товар представляет собой информацию из строки в эксель-файле.
 
 Тип входных параметров HTML-шаблона:
 
 ```typescript
-type WoodHtmlProps = {
-  name: string
-  collection: string
-  quantity: string
-  box: 'Фанерная' | 'Картонная' | 'Фанерный домик'
-  photo: string
-  icon?: 'paintbrush' | 'leaf' | 'tree' | 'check' | 'gift' | 'shield'
+type XmasDecorationsSetHtmlProps = {
   text: string
+  photo: string
+  color: string
+  isMain?: 'Да' | 'Нет'
+  textTop?: string
+  textBottom?: string
+  quantity?: number
+  height?: string
 }
 ```
 
 Тип для строк эксель-таблицы:
 
 ```typescript
-type WoodProduct = {
-  name: string
-  collection: string
-  quantity: string
-  box: 'Фанерная' | 'Картонная' | 'Фанерный домик'
-  photos: {
-    onBox: string
-    insideBox: string
-    front: string
-    back: string
-    frontWithRuler: string
-    backWithRuler: string
-    box: string
-    boxWithShavings: string
-    onTree: string
-  }
+export type XmasDecorationsSetProduct = {
+  id: string
+  textTop: string
+  text: string
+  textBottom: string
+  quantity: number
+  height: string
+  photo: string
+  color: string
+  additional: Array<AdditionalPhoto>
+}
+
+type AdditionalPhoto = {
+  text: string
+  photo: string
+  color: string
 }
 ```
 
@@ -130,18 +131,18 @@ type WoodProduct = {
 Так будет выглядеть наш класс:
 
 ```typescript
-export default class WoodTemplate extends Template<WoodProduct, WoodHtmlProps> {
-  name = 'wood'
-  width = 1800
-  height = 2400
-  products: WoodProduct[] = []
+export default class XmasDecorationsSetTemplate extends Template<XmasDecorationsSetProduct, XmasDecorationsSetHtmlProps> {
+  name = 'xmas-decorations-set'
+  width = 1500
+  height = 2000
+  products: XmasDecorationsSetProduct[] = []
   autoNumbering = true
 
-  override async parseExcel(): Promise<WoodProduct[]> {
+  override async parseExcel(): Promise<XmasDecorationsSetProduct[]> {
     // Реализация
   }
 
-  override async processProduct(product: WoodProduct) {
+  override async processProduct(product: XmasDecorationsSetProduct) {
     // Реализация
   }
 }
@@ -159,31 +160,42 @@ export default class WoodTemplate extends Template<WoodProduct, WoodHtmlProps> {
 
 Далее, нужно реализовать два метода.
 
-Метод `parseExcel()` должен превратить данные из эксель-файла в массив объектов типа `WoodProduct` и вернуть его. Для парсинга эксель-файла автоматически создаётся объект класса `Excel.Workbook` из пакета `exceljs`. Он доступен через `this.workbook`. Файл, указанный пользователем, автоматически прочитается в этот объект.
+Метод `parseExcel()` должен превратить данные из эксель-файла в массив объектов типа `XmasDecorationsSetProduct` и вернуть его. Для парсинга эксель-файла автоматически создаётся объект класса `Excel.Workbook` из пакета `exceljs`. Он доступен через `this.workbook`. Файл, указанный пользователем, автоматически прочитается в этот объект.
 
-Для генерации картинок нужно реализовать функцию `processProduct()`. Чтобы создать картинку, нужно вызвать метод `this.queueProduct()`, который принимает на вход объект типа `WoodHtmlProps` и имя файла.
+Для генерации картинок нужно реализовать функцию `processProduct()`. Чтобы создать картинку, нужно вызвать метод `this.queueProduct()`, который принимает на вход объект типа `XmasDecorationsSetHtmlProps` и имя файла.
 
 Сигнатура метода `queueProduct()`:
 
 ```typescript
-queueProduct(htmlProps: WoodHtmlProps, filename: string)
+queueProduct(htmlProps: XmasDecorationsSetHtmlProps, filename: string)
 ```
 
 Пример использования `queueProduct()`:
 
 ```typescript
+const filename = `${product.id} - ${product.text.replaceAll("<br>", " ")}`
+
 this.queueProduct({
-  name: product.name,
-  collection: product.collection,
+  isMain: 'Да',
+  text: product.text,
+  photo: product.photo,
+  color: product.color,
+  textTop: product.textTop,
+  textBottom: product.textBottom,
   quantity: product.quantity,
-  box: product.box,
-  photo: product.photos.onBox,
-  icon: 'gift',
-  text: 'Идеально для подарка'
-}, `${product.name}`)
+  height: product.height,
+}, filename)
+
+product.additional.forEach((p: AdditionalPhoto) => {
+  this.queueProduct({
+    text: p.text,
+    photo: p.photo,
+    color: p.color
+  }, filename)
+})
 ```
 
-Подробности реализации методов `parseExcel()` и `processProduct()` можно посмотреть в `template/wood/index.ts`.
+Подробности реализации методов `parseExcel()` и `processProduct()` можно посмотреть в `template/xmas-decorations-set/index.ts`.
 
 ## Диаграмма классов
 
