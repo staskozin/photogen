@@ -22,7 +22,8 @@ export default abstract class Template<Product, HtmlProps> {
 
   // Создаёт картинку
   protected queueProduct(htmlProps: HtmlProps, filename: string): void {
-    const picturePath = this.autoNumbering ? `${this.resultPath}/${filename} - ${this.fileNumber++}.jpg` : `${this.resultPath}/${filename}.jpg`
+    const cleanFilename = filename.replaceAll(':', '') // В будущем надо поумнее очистку сделать
+    const picturePath = this.autoNumbering ? `${this.resultPath}/${cleanFilename} - ${this.fileNumber++}.jpg` : `${this.resultPath}/${cleanFilename}.jpg`
     this.cluster.queue(null, async ({ page }) => {
       await page.goto(`file://${path.join(__dirname, this.name, 'html', 'index.html')}?${this.getUrlParams(htmlProps)}`)
       await page.screenshot({ 'fullPage': true, 'path': picturePath, 'quality': 100 })
