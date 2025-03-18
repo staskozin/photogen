@@ -65,11 +65,11 @@ export default abstract class Template<Product, HtmlProps> {
   // Запуск процесса генерации картинок
   private async processPhotos(): Promise<void> {
     this.cluster = await Cluster.launch({
-      concurrency: Cluster.CONCURRENCY_PAGE,
-      maxConcurrency: 5,
+      concurrency: Cluster.CONCURRENCY_CONTEXT,
+      maxConcurrency: 1,
       puppeteerOptions: {
         defaultViewport: { width: this.width, height: this.height },
-        headless: false,
+        headless: true,
       }
     })
 
